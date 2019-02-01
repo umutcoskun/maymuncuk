@@ -1,11 +1,29 @@
 import os
 from datetime import datetime, timedelta
+from optparse import OptionParser
 
 from prettytable import PrettyTable
 
 from . import Maymuncuk
 
-app = Maymuncuk('https://dugun.com')
+
+print('\nMaymuncuk v1.0\n')
+
+parser = OptionParser()
+
+parser.add_option(
+    '-p',
+    '--property',
+    dest='prop',
+    help='URL of the property.',
+)
+
+(options, args) = parser.parse_args()
+
+if not options.prop:
+    options.prop = input('Property URL: ')
+
+app = Maymuncuk(options.prop)
 app.create_engine('maymuncuk.db')
 app.create_session()
 table = PrettyTable()
