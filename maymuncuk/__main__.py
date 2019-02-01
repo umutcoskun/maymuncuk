@@ -18,10 +18,20 @@ parser.add_option(
     help='URL of the property.',
 )
 
+parser.add_option(
+    '-s',
+    '--start',
+    dest='date_start',
+    help='Starting date in Y-m-d format.',
+)
+
 (options, args) = parser.parse_args()
 
 if not options.prop:
     options.prop = input('Property URL: ')
+
+if not options.date_start:
+    options.date_start = input('Scan Starting Date: ')
 
 app = Maymuncuk(options.prop)
 app.create_engine('maymuncuk.db')
@@ -30,7 +40,7 @@ table = PrettyTable()
 
 table.field_names = ["Date", "Queries"]
 
-startDate = datetime.strptime('2017-09-19', Maymuncuk.date_format)
+startDate = datetime.strptime(options.date_start, Maymuncuk.date_format)
 session_entry_count = 0
 
 while startDate < datetime.now():
