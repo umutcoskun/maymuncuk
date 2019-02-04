@@ -12,7 +12,7 @@ from sqlalchemy import create_engine
 from googleapiclient import sample_tools
 
 
-from .models import Entry
+from .models import Base, Entry
 
 
 class Maymuncuk(object):
