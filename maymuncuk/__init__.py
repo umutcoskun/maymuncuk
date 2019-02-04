@@ -65,6 +65,9 @@ class Maymuncuk(object):
 
         response = service.searchanalytics().query(siteUrl=self.property_uri, body=payload).execute()
 
+        if 'rows' not in response:
+            return 0
+
         for row in response['rows']:
             entry = Entry(
                 query=row['keys'][0],
