@@ -25,6 +25,13 @@ parser.add_option(
     help='Starting date in Y-m-d format.',
 )
 
+parser.add_option(
+    '-d',
+    '--db',
+    dest='datebase',
+    help='Filename of the database.',
+)
+
 (options, args) = parser.parse_args()
 
 if not options.prop:
@@ -33,8 +40,11 @@ if not options.prop:
 if not options.date_start:
     options.date_start = input('Scan Starting Date: ')
 
+if not options.database:
+    options.database = 'maymuncuk.db'
+
 app = Maymuncuk(options.prop)
-app.create_engine('maymuncuk.db')
+app.create_engine(options.database)
 app.create_session()
 table = PrettyTable()
 
