@@ -9,3 +9,7 @@ Retrieve data from Search Console API.
 * `source env/bin/activate`
 * `pip3 install -r requirements.txt`
 * `python3 -m maymuncuk`
+
+**Usage:**
+
+`python3 -m maymuncuk --property https://yoursite.com --start 2018-01-01`
