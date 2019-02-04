@@ -28,7 +28,7 @@ parser.add_option(
 parser.add_option(
     '-d',
     '--db',
-    dest='datebase',
+    dest='database',
     help='Filename of the database.',
 )
 
